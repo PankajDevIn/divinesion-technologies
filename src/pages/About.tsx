@@ -11,24 +11,21 @@ import Hero from "../components/Hero";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
-// Refined Animation Variants for Mobile + Desktop
+// Animation Variants
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { 
-      staggerChildren: 0.1, // Faster stagger for mobile snappiness
-      delayChildren: 0.1 
-    },
+    transition: { staggerChildren: 0.15, delayChildren: 0.3 },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 15 }, // Smaller 'y' for mobile
+  hidden: { opacity: 0, y: 30 },
   visible: { 
     opacity: 1, 
     y: 0, 
-    transition: { type: "spring", stiffness: 100, damping: 15 } 
+    transition: { type: "spring", stiffness: 120, damping: 18 } 
   },
 };
 
@@ -41,143 +38,142 @@ const values = [
 ];
 
 const stats = [
-  { label: "Projects delivered", value: "50+" },
-  { label: "Avg. delivery", value: "~4 weeks" },
-  { label: "Satisfaction", value: "95%" },
+  { label: "Projects delivered", value: 50 },
+  { label: "Avg. delivery time (days)", value: 28 },
+  { label: "Client satisfaction (%)", value: 95 },
   { label: "Tech stack", value: "Full‑stack" },
 ];
 
 export default function About() {
   return (
-    <div className="bg-slate-50 min-h-screen flex flex-col selection:bg-indigo-100 selection:text-indigo-900 overflow-x-hidden">
+    <div className="bg-slate-50 min-h-screen flex flex-col selection:bg-indigo-100 selection:text-indigo-900">
       <Navbar />
       
       <Hero
-        title="About Divinesion"
-        subtitle="Empowering businesses with scalable SaaS and modern web solutions — blending heritage with global polish."
+        title="About Divinesion Technologies"
+        subtitle="Empowering businesses with scalable SaaS and modern web solutions — blending local heritage with global professionalism."
       />
 
-      {/* Story Section - Responsive Grid */}
+      {/* Story Section */}
       <motion.section
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        className="py-16 md:py-24 px-6 max-w-6xl mx-auto"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        className="py-20 px-6 max-w-6xl mx-auto"
       >
-        <div className="flex flex-col md:grid md:grid-cols-2 gap-10 md:gap-16 items-center">
-          <article className="order-2 md:order-1 text-left">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6 tracking-tight">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <article>
+            <h2 className="text-4xl font-extrabold text-slate-900 mb-6 tracking-tight">
               Our <span className="text-indigo-600">Story</span>
             </h2>
-            <div className="space-y-4 text-slate-600 text-base md:text-lg leading-relaxed">
-              <p>
-                Founded to make high-end technology accessible, 
-                <span className="font-semibold text-slate-800"> Divinesion Technologies</span> began as a passion project to bridge the gap between local small businesses and enterprise-grade software. 
-              </p>
-              <p>
-                We don’t just build apps; we craft solutions that solve cultural and operational bottlenecks.
-              </p>
-              <p className="italic text-indigo-600 font-medium border-l-4 border-indigo-200 pl-4">
-                "Empowering every learner and entrepreneur with tools that scale globally."
-              </p>
-            </div>
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
+              Founded to make high-end technology accessible, 
+              <span className="font-semibold text-slate-800"> Divinesion Technologies</span> began as a passion project to bridge the gap between 
+              local small businesses and enterprise-grade software. 
+            </p>
+            <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed">
+              We don’t just build apps; we craft solutions that solve cultural and operational 
+              bottlenecks, ensuring your digital presence is both authentic and world-class.
+            </p>
+            <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed italic">
+              Our founder’s vision: to empower every learner and entrepreneur with tools that scale globally.
+            </p>
           </article>
-          
-          <motion.div 
-            whileHover={{ scale: 1.02 }}
-            className="order-1 md:order-2 w-full bg-gradient-to-tr from-indigo-500 to-purple-600 rounded-[2rem] h-64 md:h-[400px] flex items-center justify-center shadow-2xl relative overflow-hidden"
-          >
-              <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
-              <span className="relative text-white font-bold text-xl tracking-widest uppercase px-6 text-center">
-                Innovation in Motion
-              </span>
-          </motion.div>
+          <div className="bg-gradient-to-tr from-indigo-100 to-purple-100 rounded-3xl h-64 md:h-full flex items-center justify-center border-2 border-dashed border-indigo-200">
+             {/* Placeholder for an About Image or Illustration */}
+             <span className="text-indigo-400 font-medium italic">Our Vision in Motion</span>
+          </div>
         </div>
       </motion.section>
 
-      {/* Values Section - Card Stack for Mobile */}
+      {/* Values Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-3xl font-bold text-slate-900">Core Values</h2>
-            <div className="h-1 w-12 bg-indigo-600 mx-auto mt-3 rounded-full" />
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-slate-900">Built on Core Values</h2>
+            <div className="h-1.5 w-20 bg-indigo-600 mx-auto mt-4 rounded-full" />
           </div>
           
           <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-            className="grid gap-4 md:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+            viewport={{ once: true, margin: "-100px" }}
+            className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
           >
             {values.map((item) => (
               <motion.div
                 key={item.title}
                 variants={itemVariants}
-                className="group p-6 md:p-8 rounded-2xl bg-slate-50 border border-slate-100 active:scale-95 md:active:scale-100 md:hover:shadow-xl transition-all duration-300"
+                className="group p-8 rounded-3xl bg-slate-50 border border-transparent hover:border-indigo-100 hover:bg-white hover:shadow-xl transition-all duration-300"
               >
-                <div className="inline-flex p-3 bg-indigo-600 rounded-xl text-white mb-5 shadow-indigo-100 shadow-lg">
-                  <item.icon className="h-6 w-6 md:h-7 md:w-7" aria-hidden="true" />
+                <div className="inline-flex p-3 bg-white rounded-2xl shadow-sm text-indigo-600 mb-6 group-hover:bg-indigo-600 group-hover:text-white transition-colors duration-300">
+                  <item.icon className="h-8 w-8" aria-hidden="true" />
                 </div>
-                <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-2">{item.title}</h3>
-                <p className="text-slate-600 text-sm md:text-base leading-relaxed">{item.description}</p>
+                <h3 className="text-xl font-bold text-slate-900 mb-3">{item.title}</h3>
+                <p className="text-slate-600 leading-relaxed">{item.description}</p>
               </motion.div>
             ))}
           </motion.div>
         </div>
       </section>
 
-      {/* Stats Section - 2x2 Grid on Mobile */}
-      <section className="bg-slate-900 py-20 px-6 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-30">
-            <div className="absolute top-0 left-1/4 w-64 h-64 bg-indigo-500 rounded-full blur-[100px]" />
-            <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-purple-500 rounded-full blur-[100px]" />
+      {/* Stats Section */}
+      <section className="bg-slate-900 py-24 px-6 relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+            <div className="absolute top-[-10%] left-[-10%] w-72 h-72 bg-indigo-500 rounded-full blur-[80px]" />
+            <div className="absolute bottom-[-10%] right-[-10%] w-72 h-72 bg-purple-500 rounded-full blur-[80px]" />
         </div>
         
-        <dl className="relative max-w-6xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-4">
+        <dl className="relative max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
           {stats.map((stat, idx) => (
             <motion.div
               key={stat.label}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="flex flex-col items-center text-center"
+              className="flex flex-col items-center"
             >
-              <dd className="text-3xl md:text-5xl font-black text-white mb-1">
-                {stat.value}
-              </dd>
-              <dt className="text-[10px] md:text-xs text-indigo-300 font-bold uppercase tracking-[0.2em]">
+              <dt className="order-2 mt-2 text-indigo-300 font-medium uppercase tracking-widest text-xs">
                 {stat.label}
               </dt>
+              <motion.dd
+                className="order-1 text-5xl font-extrabold text-white tracking-tight"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: idx * 0.2 }}
+              >
+                {typeof stat.value === "number" ? `${stat.value}+` : stat.value}
+              </motion.dd>
             </motion.div>
           ))}
         </dl>
       </section>
 
-      {/* CTA Section - Touch Optimized */}
+      {/* Call to Action */}
       <motion.section
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="py-20 px-6 text-center"
+        className="py-24 px-6 text-center bg-indigo-50"
       >
-        <div className="max-w-3xl mx-auto bg-indigo-600 rounded-[2.5rem] p-10 md:p-16 text-white shadow-2xl shadow-indigo-200">
-            <h2 className="text-3xl md:text-5xl font-extrabold mb-6 leading-tight">
-              Ready to build?
-            </h2>
-            <p className="text-indigo-100 text-base md:text-lg mb-10 opacity-90">
-              Join 50+ partners who scaled their vision with our specialized development teams.
-            </p>
-            <motion.a
-              href="/contact"
-              whileTap={{ scale: 0.9 }}
-              className="inline-flex items-center justify-center gap-3 bg-white text-indigo-600 w-full sm:w-auto px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-100 transition-colors shadow-lg"
-            >
-              Start Your Project
-              <ArrowRightIcon className="w-5 h-5" />
-            </motion.a>
-        </div>
+        <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-8">
+          Ready to digitize your vision?
+        </h2>
+        <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto mb-12">
+          From AI automation to creative branding, we provide the tech muscle your business needs to scale.
+        </p>
+        <motion.a
+          href="/contact"
+          whileHover={{ scale: 1.05, y: -2 }}
+          whileTap={{ scale: 0.95 }}
+          className="inline-flex items-center gap-3 bg-indigo-600 text-white px-8 py-4 rounded-full shadow-lg shadow-indigo-200 font-bold hover:bg-indigo-700 transition-all"
+          aria-label="Start your project with Divinesion Technologies"
+        >
+          Start Your Project
+          <ArrowRightIcon className="w-5 h-5" aria-hidden="true" />
+        </motion.a>
       </motion.section>
 
       <Footer />

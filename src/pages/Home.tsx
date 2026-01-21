@@ -11,12 +11,12 @@ import {
   ArrowRightIcon,
 } from "@heroicons/react/24/outline";
 
-// Services data
+// Services data - Blue theme
 const services = [
-  { title: "Mobile Apps", desc: "iOS & Android", icon: CpuChipIcon, color: "from-slate-400 to-violet-400" },
-  { title: "Websites", desc: "Fast & Scalable", icon: GlobeAltIcon, color: "from-violet-500 to-indigo-500" },
-  { title: "AI Tools", desc: "Automation", icon: SparklesIcon, color: "from-purple-500 to-violet-500" },
-  { title: "Cloud", desc: "AWS Experts", icon: RocketLaunchIcon, color: "from-slate-500 to-zinc-400" },
+  { title: "Mobile Apps", desc: "iOS & Android", icon: CpuChipIcon, color: "from-blue-400 to-cyan-400" },
+  { title: "Websites", desc: "Fast & Scalable", icon: GlobeAltIcon, color: "from-cyan-500 to-blue-500" },
+  { title: "AI Tools", desc: "Automation", icon: SparklesIcon, color: "from-blue-500 to-indigo-500" },
+  { title: "Cloud", desc: "AWS Experts", icon: RocketLaunchIcon, color: "from-slate-500 to-blue-600" },
 ];
 
 const techStack = ["React", "Next.js", "Node.js", "Python", "AWS", "Docker", "Tailwind", "TypeScript"];
@@ -43,24 +43,24 @@ type Props = {};
 
 function Home({}: Props) {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-violet-950/20 to-slate-900 text-slate-200 selection:bg-violet-500/50 font-['Inter'] overflow-x-hidden">
+    <div className="min-h-screen bg-slate-950 text-slate-200 selection:bg-blue-500/40 font-['Inter'] overflow-x-hidden">
       
       <Navbar />
       
-      {/* 🚀 HERO - Already themed */}
+      {/* 🚀 HERO - Already blue themed */}
       <Hero 
         title="Divinesion Technologies" 
         subtitle="Speed • Reliability • Innovation" 
         ctaText="Explore Our Services"
       />
 
-      {/* 🛠️ TECH STACK MARQUEE - Hero theme */}
+      {/* 🛠️ TECH STACK MARQUEE - Solid blue */}
       <motion.section 
         initial="hidden" 
         whileInView="visible" 
         viewport={{ once: true }} 
         variants={staggerContainer}
-        className="py-20 border-y border-slate-900/50 bg-gradient-to-br from-slate-950/90 via-violet-950/20 to-slate-900/90 backdrop-blur-2xl overflow-hidden"
+        className="py-20 border-y border-slate-900/50 bg-slate-950/90"
       >
         <motion.div
           animate={{ x: [0, -1920] }}
@@ -70,7 +70,7 @@ function Home({}: Props) {
           {[...techStack, ...techStack, ...techStack].map((tech, i) => (
             <motion.span
               key={i}
-              className="text-3xl lg:text-4xl font-black text-slate-300/80 backdrop-blur-xl uppercase tracking-wider animate-pulse drop-shadow-lg"
+              className="text-3xl lg:text-4xl font-black text-slate-400 uppercase tracking-wider"
             >
               {tech}
             </motion.span>
@@ -78,8 +78,8 @@ function Home({}: Props) {
         </motion.div>
       </motion.section>
 
-      {/* 🎨 SERVICES SECTION - Hero theme */}
-      <section id="services" className="py-40 px-8 lg:px-20 max-w-8xl mx-auto bg-slate-950/50 backdrop-blur-xl">
+      {/* 🎨 SERVICES SECTION - Solid blue theme */}
+      <section id="services" className="py-40 px-8 lg:px-20 max-w-8xl mx-auto bg-slate-950">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -89,17 +89,17 @@ function Home({}: Props) {
         >
           <motion.h2 
             variants={fadeInUp} 
-            className="text-5xl md:text-7xl lg:text-8xl font-black mb-12 tracking-[-0.02em] bg-gradient-to-r from-slate-200 via-white to-violet-500 bg-clip-text text-transparent drop-shadow-4xl"
+            className="text-5xl md:text-7xl lg:text-8xl font-black mb-12 tracking-[-0.02em] bg-gradient-to-r from-slate-200 via-white to-blue-400 bg-clip-text text-transparent drop-shadow-4xl"
           >
             Core Competencies
           </motion.h2>
           <motion.div 
             variants={fadeInUp}
-            className="w-32 h-1 mx-auto bg-gradient-to-r from-violet-600 to-purple-600 rounded-full shadow-lg shadow-violet-500/50"
+            className="w-32 h-1 mx-auto bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full shadow-lg shadow-blue-500/50"
           />
           <motion.p 
             variants={fadeInUp}
-            className="text-2xl md:text-3xl text-slate-400 max-w-4xl mx-auto mt-12 leading-relaxed font-medium backdrop-blur-sm"
+            className="text-2xl md:text-3xl text-slate-400 max-w-4xl mx-auto mt-12 leading-relaxed font-medium"
           >
             Precision-engineered solutions for enterprise scale
           </motion.p>
@@ -116,27 +116,27 @@ function Home({}: Props) {
             <motion.div
               key={i}
               variants={fadeInUp}
-              className="relative p-12 lg:p-16 rounded-[3rem] bg-gradient-to-b from-slate-900/95 to-slate-950/95 border border-slate-800/70 backdrop-blur-xl shadow-3xl shadow-slate-900/50 hover:shadow-violet-500/20 group transition-all duration-1000 min-h-[320px] overflow-hidden"
+              className="relative p-12 lg:p-16 rounded-[3rem] bg-slate-900 border-2 border-slate-800 shadow-2xl hover:shadow-blue-500/30 hover:border-blue-600/50 group transition-all duration-1000 min-h-[320px]"
               transition={{ delay: 0.8 + i * 0.15 }}
             >
               <motion.div
                 className={`absolute inset-0 bg-gradient-to-br opacity-0 ${service.color} blur-xl`}
-                animate={{ opacity: [0, 0.1, 0] }}
+                animate={{ opacity: [0, 0.08, 0] }}
                 transition={{ duration: 4, repeat: Infinity }}
               />
               
               <motion.div 
-                className="relative z-10 p-8 rounded-3xl mb-12 shadow-2xl bg-slate-900/60 backdrop-blur-xl border border-slate-800/50"
+                className="relative z-10 p-8 rounded-3xl mb-12 shadow-2xl bg-slate-900/90 border border-slate-800"
                 animate={{ scale: [1, 1.05, 1], rotate: [0, 2, 0] }}
                 transition={{ scale: { duration: 6, repeat: Infinity }, rotate: { duration: 10, repeat: Infinity } }}
               >
-                <service.icon className="w-16 h-16 text-white drop-shadow-2xl" />
+                <service.icon className="w-16 h-16 text-blue-300 drop-shadow-xl" />
               </motion.div>
               
-              <h3 className="text-3xl lg:text-4xl font-black mb-8 text-white drop-shadow-xl animate-pulse bg-gradient-to-r from-slate-200 to-slate-100 bg-clip-text text-transparent">
+              <h3 className="text-3xl lg:text-4xl font-black mb-8 text-white drop-shadow-xl bg-gradient-to-r from-slate-200 to-blue-300 bg-clip-text text-transparent">
                 {service.title}
               </h3>
-              <p className="text-xl text-slate-400 leading-relaxed font-medium backdrop-blur-sm">
+              <p className="text-xl text-slate-400 leading-relaxed font-medium">
                 {service.desc}
               </p>
             </motion.div>
@@ -144,31 +144,31 @@ function Home({}: Props) {
         </motion.div>
       </section>
 
-      {/* 🚀 FINAL CTA - Hero theme */}
+      {/* 🚀 FINAL CTA - Solid blue */}
       <motion.section 
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
         variants={staggerContainer}
-        className="py-40 px-8 lg:px-24 bg-gradient-to-br from-slate-950/80 via-violet-950/10 to-slate-900/80 backdrop-blur-xl"
+        className="py-40 px-8 lg:px-24 bg-slate-950"
       >
         <motion.div 
           variants={fadeInUp}
-          className="relative max-w-6xl mx-auto p-16 lg:p-24 rounded-[5rem] bg-gradient-to-br from-violet-700/90 via-purple-700/80 to-slate-900/95 backdrop-blur-3xl border border-violet-600/50 shadow-4xl shadow-violet-500/30 overflow-hidden"
+          className="relative max-w-6xl mx-auto p-16 lg:p-24 rounded-[5rem] bg-slate-900 border-4 border-slate-800 shadow-4xl"
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-white/8 to-transparent opacity-60 backdrop-blur-xl" />
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-transparent rounded-[5rem]" />
           
-          <div className="relative z-20 text-center">
+          <div className="relative z-10 text-center">
             <motion.h2 
               variants={fadeInUp}
-              className="text-6xl md:text-8xl lg:text-[6rem] font-black mb-12 text-white drop-shadow-4xl leading-[0.9] bg-gradient-to-r from-white to-slate-200 bg-clip-text -webkit-bg-clip-text"
+              className="text-6xl md:text-8xl lg:text-[6rem] font-black mb-12 text-white drop-shadow-4xl leading-[0.9] bg-gradient-to-r from-slate-100 to-blue-300 bg-clip-text"
             >
               Ready to Build?
             </motion.h2>
             
             <motion.p 
               variants={fadeInUp}
-              className="text-2xl lg:text-3xl mb-16 text-slate-300 font-medium leading-relaxed max-w-4xl mx-auto backdrop-blur-sm"
+              className="text-2xl lg:text-3xl mb-16 text-slate-300 font-medium leading-relaxed max-w-4xl mx-auto"
             >
               Q1 2026 - Limited project slots available
             </motion.p>
@@ -176,13 +176,11 @@ function Home({}: Props) {
             <motion.a
               href="/contact"
               variants={fadeInUp}
-              className="inline-block px-20 py-10 bg-white/95 text-slate-900 rounded-4xl font-black text-2xl lg:text-3xl shadow-4xl backdrop-blur-2xl border-4 border-white/40 shadow-violet-500/30 hover:shadow-violet-400/50 transition-all duration-1000 w-fit mx-auto flex items-center gap-6 group"
-              animate={{ scale: [1, 1.02, 1], rotate: [-1, 1, 0] }}
-              transition={{ scale: { duration: 3, repeat: Infinity }, rotate: { duration: 5, repeat: Infinity } }}
+              className="inline-block px-20 py-10 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-4xl font-black text-2xl lg:text-3xl shadow-4xl border-4 border-blue-500/50 hover:shadow-blue-500/50 transition-all duration-1000 w-fit mx-auto flex items-center gap-6 group"
               whileHover={{ scale: 1.05 }}
             >
               Start Collaboration
-              <ArrowRightIcon className="w-8 h-8 animate-bounce group-hover:animate-none group-hover:translate-x-1 transition-all duration-300" />
+              <ArrowRightIcon className="w-8 h-8 m-auto group-hover:translate-x-1 transition-transform" />
             </motion.a>
           </div>
         </motion.div>
