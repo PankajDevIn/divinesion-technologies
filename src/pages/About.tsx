@@ -1,4 +1,6 @@
-import { motion } from "framer-motion";
+import React from "react";
+import { motion } from "framer-motion"; // ✅ Imported Variants interface safely
+import type { Variants } from "framer-motion"; // ✅ Explicitly imported Variants type
 import {
   ShieldCheckIcon,
   BoltIcon,
@@ -11,8 +13,8 @@ import Hero from "../components/Hero";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
-// Animation Variants
-const containerVariants = {
+// Animation Variants (Explicitly Typed)
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -20,12 +22,12 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: { 
     opacity: 1, 
     y: 0, 
-    transition: { type: "spring", stiffness: 120, damping: 18 } 
+    transition: { type: "spring" as const, stiffness: 120, damping: 18 } // ✅ Added "as const" literal fix
   },
 };
 
@@ -52,6 +54,7 @@ export default function About() {
       <Hero
         title="About Divinesion Technologies"
         subtitle="Empowering businesses with scalable SaaS and modern web solutions — blending local heritage with global professionalism."
+        ctaText="Explore Our Services" // ✅ Clean alignment mapping for required prop
       />
 
       {/* Story Section */}
