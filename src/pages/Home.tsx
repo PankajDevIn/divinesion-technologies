@@ -1,5 +1,6 @@
-import React from "react";
-import { motion } from "framer-motion";
+
+import { motion} from "framer-motion"; // ✅ Imported Variants type cleanly
+import type { Variants } from "framer-motion"; // ✅ Explicitly imported Variants type
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import Footer from "../components/Footer";
@@ -21,8 +22,8 @@ const services = [
 
 const techStack = ["React", "Next.js", "Node.js", "Python", "AWS", "Docker", "Tailwind", "TypeScript"];
 
-// 🔥 SAME ANIMATION VARIANTS AS HERO
-const fadeInUp = {
+// 🔥 SAME ANIMATION VARIANTS AS HERO (Explicitly Typed)
+const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 50 },
   visible: { 
     opacity: 1, 
@@ -31,7 +32,7 @@ const fadeInUp = {
   },
 };
 
-const staggerContainer = {
+const staggerContainer: Variants = {
   hidden: { opacity: 0 },
   visible: { 
     opacity: 1, 
@@ -89,13 +90,13 @@ function Home({}: Props) {
         >
           <motion.h2 
             variants={fadeInUp} 
-            className="text-5xl md:text-7xl lg:text-8xl font-black mb-12 tracking-[-0.02em] bg-gradient-to-r from-slate-200 via-white to-blue-400 bg-clip-text text-transparent drop-shadow-4xl"
+            className="text-5xl md:text-7xl lg:text-8xl font-black mb-12 tracking-[-0.02em] bg-linear-to-r from-slate-200 via-white to-blue-400 bg-clip-text text-transparent drop-shadow-4xl"
           >
             Core Competencies
           </motion.h2>
           <motion.div 
             variants={fadeInUp}
-            className="w-32 h-1 mx-auto bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full shadow-lg shadow-blue-500/50"
+            className="w-32 h-1 mx-auto bg-linear-to-r from-blue-500 to-cyan-500 rounded-full shadow-lg shadow-blue-500/50"
           />
           <motion.p 
             variants={fadeInUp}
@@ -116,11 +117,11 @@ function Home({}: Props) {
             <motion.div
               key={i}
               variants={fadeInUp}
-              className="relative p-12 lg:p-16 rounded-[3rem] bg-slate-900 border-2 border-slate-800 shadow-2xl hover:shadow-blue-500/30 hover:border-blue-600/50 group transition-all duration-1000 min-h-[320px]"
+              className="relative p-12 lg:p-16 rounded-[3rem] bg-slate-900 border-2 border-slate-800 shadow-2xl hover:shadow-blue-500/30 hover:border-blue-600/50 group transition-all duration-1000 min-h-80"
               transition={{ delay: 0.8 + i * 0.15 }}
             >
               <motion.div
-                className={`absolute inset-0 bg-gradient-to-br opacity-0 ${service.color} blur-xl`}
+                className={`absolute inset-0 bg-linear-to-br opacity-0 ${service.color} blur-xl`}
                 animate={{ opacity: [0, 0.08, 0] }}
                 transition={{ duration: 4, repeat: Infinity }}
               />
@@ -133,7 +134,7 @@ function Home({}: Props) {
                 <service.icon className="w-16 h-16 text-blue-300 drop-shadow-xl" />
               </motion.div>
               
-              <h3 className="text-3xl lg:text-4xl font-black mb-8 text-white drop-shadow-xl bg-gradient-to-r from-slate-200 to-blue-300 bg-clip-text text-transparent">
+              <h3 className="text-3xl lg:text-4xl font-black mb-8  drop-shadow-xl bg-linear-to-r from-slate-200 to-blue-300 bg-clip-text text-transparent">
                 {service.title}
               </h3>
               <p className="text-xl text-slate-400 leading-relaxed font-medium">
@@ -156,12 +157,12 @@ function Home({}: Props) {
           variants={fadeInUp}
           className="relative max-w-6xl mx-auto p-16 lg:p-24 rounded-[5rem] bg-slate-900 border-4 border-slate-800 shadow-4xl"
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-transparent rounded-[5rem]" />
+          <div className="absolute inset-0 bg-linear-to-r from-blue-500/5 to-transparent rounded-[5rem]" />
           
           <div className="relative z-10 text-center">
             <motion.h2 
               variants={fadeInUp}
-              className="text-6xl md:text-8xl lg:text-[6rem] font-black mb-12 text-white drop-shadow-4xl leading-[0.9] bg-gradient-to-r from-slate-100 to-blue-300 bg-clip-text"
+              className="text-6xl md:text-8xl lg:text-[6rem] font-black mb-12 text-white drop-shadow-4xl leading-[0.9] bg-linear-to-r from-slate-100 to-blue-300 bg-clip-text"
             >
               Ready to Build?
             </motion.h2>
@@ -176,7 +177,7 @@ function Home({}: Props) {
             <motion.a
               href="/contact"
               variants={fadeInUp}
-              className="inline-block px-20 py-10 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-4xl font-black text-2xl lg:text-3xl shadow-4xl border-4 border-blue-500/50 hover:shadow-blue-500/50 transition-all duration-1000 w-fit mx-auto flex items-center gap-6 group"
+              className="inline-block px-20 py-10 bg-linear-to-r from-blue-600 to-cyan-600 text-white rounded-4xl font-black text-2xl lg:text-3xl shadow-4xl border-4 border-blue-500/50 hover:shadow-blue-500/50 transition-all duration-1000 w-fit mx-auto items-center gap-6 group"
               whileHover={{ scale: 1.05 }}
             >
               Start Collaboration

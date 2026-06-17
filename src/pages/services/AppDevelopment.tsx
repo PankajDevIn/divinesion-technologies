@@ -21,7 +21,7 @@ const AppDevelopment: React.FC = () => {
         viewport={{ once: true }}
         className="min-h-[70vh] flex flex-col items-center justify-center px-6 lg:px-20 py-24 text-center bg-slate-950"
       >
-        <motion.h1 variants={fadeInUp} className="text-5xl md:text-7xl font-black bg-gradient-to-r from-slate-100 to-blue-400 bg-clip-text text-transparent">
+        <motion.h1 variants={fadeInUp} className="text-5xl md:text-7xl font-black bg-linear-to-r from-slate-100 to-blue-400 bg-clip-text text-transparent">
           App Development
         </motion.h1>
         <motion.p variants={fadeInUp} className="text-xl md:text-2xl text-slate-400 max-w-3xl mt-6">
@@ -37,7 +37,7 @@ const AppDevelopment: React.FC = () => {
             whileInView={{ opacity: 1, x: 0 }} 
             className="space-y-8"
           >
-            <h2 className="text-4xl lg:text-5xl font-black bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+            <h2 className="text-4xl lg:text-5xl font-black bg-linear-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
               React Native Expertise
             </h2>
             <div className="space-y-4 text-xl text-slate-300">
@@ -49,7 +49,7 @@ const AppDevelopment: React.FC = () => {
             </div>
             <motion.a 
               href="/contact" 
-              className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-3xl font-black text-xl shadow-2xl hover:shadow-blue-500/50 transition-all"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-linear-to-r from-blue-600 to-cyan-600 text-white rounded-3xl font-black text-xl shadow-2xl hover:shadow-blue-500/50 transition-all"
               whileHover={{ scale: 1.05 }}
             >
               Start Your App <ArrowRightIcon className="w-5 h-5" />

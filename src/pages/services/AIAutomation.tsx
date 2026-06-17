@@ -29,7 +29,7 @@ const AIAutomation: React.FC = () => {
       >
         <motion.h1
           variants={fadeInUp}
-          className="text-5xl md:text-7xl font-black bg-gradient-to-r from-slate-100 to-blue-400 bg-clip-text text-transparent"
+          className="text-5xl md:text-7xl font-black bg-linear-to-r from-slate-100 to-blue-400 bg-clip-text text-transparent"
         >
           AI & Automation
         </motion.h1>
@@ -102,7 +102,7 @@ const AIAutomation: React.FC = () => {
 
             <motion.a
               href="/contact"
-              className="block w-full px-10 py-6 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-4xl font-black text-xl text-center shadow-3xl hover:shadow-blue-500/50 transition-all"
+              className="block w-full px-10 py-6 bg-linear-to-r from-blue-600 to-cyan-600 text-white rounded-4xl font-black text-xl text-center shadow-3xl hover:shadow-blue-500/50 transition-all"
               whileHover={{ scale: 1.05 }}
             >
               Automate Your Business

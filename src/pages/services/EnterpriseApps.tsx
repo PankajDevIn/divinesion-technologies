@@ -21,7 +21,7 @@ const EnterpriseApps: React.FC = () => {
         viewport={{ once: true }}
         className="min-h-[70vh] flex flex-col items-center justify-center px-6 lg:px-20 py-24 text-center bg-slate-950"
       >
-        <motion.h1 variants={fadeInUp} className="text-5xl md:text-7xl font-black bg-gradient-to-r from-slate-100 to-blue-400 bg-clip-text text-transparent">
+        <motion.h1 variants={fadeInUp} className="text-5xl md:text-7xl font-black bg-linear-to-r from-slate-100 to-blue-400 bg-clip-text text-transparent">
           Enterprise Apps
         </motion.h1>
         <motion.p variants={fadeInUp} className="text-xl md:text-2xl text-slate-400 max-w-3xl mt-6">
@@ -54,7 +54,7 @@ const EnterpriseApps: React.FC = () => {
           <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} className="lg:col-span-1">
             <motion.a 
               href="/contact" 
-              className="block w-full px-12 py-8 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-4xl font-black text-2xl shadow-3xl hover:shadow-blue-500/50 transition-all"
+              className="block w-full px-12 py-8 bg-linear-to-r from-blue-600 to-cyan-600 text-white rounded-4xl font-black text-2xl shadow-3xl hover:shadow-blue-500/50 transition-all"
               whileHover={{ scale: 1.05 }}
             >
               Build Enterprise Solution <ArrowRightIcon className="w-8 h-8 inline ml-3" />

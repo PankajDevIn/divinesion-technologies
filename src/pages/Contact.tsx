@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import {
   EnvelopeIcon,
@@ -16,10 +16,7 @@ import emailjs from '@emailjs/browser';
 emailjs.init('LwMscZgOCQ19S1d4Q'); // Get from EmailJS dashboard
 
 // Quiet animations
-const fadeInUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-};
+
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -72,7 +69,7 @@ console.log(new FormData(formRef.current!));
         {orbs.map((orb, index) => (
           <motion.div
             key={index}
-            className={`absolute bg-gradient-to-r ${orb.color} rounded-full blur-3xl shadow-2xl shadow-blue-500/25`}
+            className={`absolute bg-linear-to-r ${orb.color} rounded-full blur-3xl shadow-2xl shadow-blue-500/25`}
             style={{
               left: `${orb.x}vw`,
               top: `${orb.y}vh`,
@@ -108,7 +105,7 @@ console.log(new FormData(formRef.current!));
         </motion.div>
 
         <motion.h1 
-          className="text-5xl md:text-7xl font-black mb-6 bg-gradient-to-r from-slate-100 to-blue-400 bg-clip-text text-transparent drop-shadow-2xl max-w-4xl mx-auto leading-tight"
+          className="text-5xl md:text-7xl font-black mb-6 bg-linear-to-r from-slate-100 to-blue-400 bg-clip-text text-transparent drop-shadow-2xl max-w-4xl mx-auto leading-tight"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -141,7 +138,7 @@ console.log(new FormData(formRef.current!));
             className="space-y-8"
           >
             <div className="space-y-3">
-              <h3 className="text-3xl font-bold bg-gradient-to-r from-slate-200 to-blue-400 bg-clip-text text-transparent">
+              <h3 className="text-3xl font-bold bg-linear-to-r from-slate-200 to-blue-400 bg-clip-text text-transparent">
                 Get In Touch
               </h3>
               <p className="text-lg text-slate-400 leading-relaxed">
@@ -151,7 +148,7 @@ console.log(new FormData(formRef.current!));
 
             <div className="space-y-4">
               <motion.div className="group flex items-start gap-4 p-6 bg-slate-900/80 backdrop-blur-sm rounded-3xl border-2 border-slate-800 hover:border-blue-600 hover:bg-blue-900/20 transition-all duration-700 cursor-pointer">
-                <EnvelopeIcon className="w-8 h-8 text-blue-400 mt-1 flex-shrink-0" />
+                <EnvelopeIcon className="w-8 h-8 text-blue-400 mt-1 shrink-0" />
                 <div>
                   <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Email</p>
                   <a href="mailto:mulikp792@gmail.com" className="text-slate-200 hover:text-blue-400 font-semibold text-lg transition-colors block">
@@ -161,7 +158,7 @@ console.log(new FormData(formRef.current!));
               </motion.div>
 
               <motion.div className="group flex items-start gap-4 p-6 bg-slate-900/80 backdrop-blur-sm rounded-3xl border-2 border-slate-800 hover:border-emerald-600 hover:bg-emerald-900/20 transition-all duration-700 cursor-pointer">
-                <PhoneIcon className="w-8 h-8 text-emerald-500 mt-1 flex-shrink-0" />
+                <PhoneIcon className="w-8 h-8 text-emerald-500 mt-1 shrink-0" />
                 <div>
                   <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Phone</p>
                   <a href="tel:+919730246521" className="text-slate-200 hover:text-emerald-500 font-semibold text-lg transition-colors block">
@@ -171,7 +168,7 @@ console.log(new FormData(formRef.current!));
               </motion.div>
 
               <motion.div className="group flex items-start gap-4 p-6 bg-slate-900/80 backdrop-blur-sm rounded-3xl border-2 border-slate-800 hover:border-amber-600 hover:bg-amber-900/20 transition-all duration-700 cursor-pointer">
-                <MapPinIcon className="w-8 h-8 text-amber-500 mt-1 flex-shrink-0" />
+                <MapPinIcon className="w-8 h-8 text-amber-500 mt-1 shrink-0" />
                 <div>
                   <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Location</p>
                   <p className="text-slate-300 font-semibold text-lg">Karad, Maharashtra, India</p>
@@ -272,7 +269,7 @@ console.log(new FormData(formRef.current!));
                     <motion.button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full px-8 py-6 bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white font-bold text-xl rounded-3xl shadow-2xl border-2 border-blue-500 hover:border-blue-400 disabled:opacity-60 disabled:cursor-not-allowed transition-all duration-400 flex items-center justify-center gap-3 backdrop-blur-sm"
+                      className="w-full px-8 py-6 bg-linear-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white font-bold text-xl rounded-3xl shadow-2xl border-2 border-blue-500 hover:border-blue-400 disabled:opacity-60 disabled:cursor-not-allowed transition-all duration-400 flex items-center justify-center gap-3 backdrop-blur-sm"
                       whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
                       whileTap={{ scale: 0.98 }}
                     >
