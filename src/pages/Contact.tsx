@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import {
   EnvelopeIcon,
@@ -10,6 +10,10 @@ import {
 } from "@heroicons/react/24/outline";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import emailjs from '@emailjs/browser';
+
+// Initialize EmailJS - ADD YOUR PUBLIC KEY
+emailjs.init('LwMscZgOCQ19S1d4Q'); // Get from EmailJS dashboard
 
 // Quiet animations
 const fadeInUp = {
@@ -25,8 +29,9 @@ export default function Contact() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const formRef = useRef(null); // EmailJS form reference
 
-  // 3D Orb positions & animation
+  // 3D Orb positions & animation (unchanged)
   const orbs = [
     { x: 10, y: 20, size: 200, speed: 0.5, color: "from-blue-500/20 to-cyan-500/10" },
     { x: 80, y: 60, size: 150, speed: 0.3, color: "from-cyan-400/15 to-blue-600/10" },
@@ -37,13 +42,22 @@ export default function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus("idle");
+console.log(new FormData(formRef.current!));
 
     try {
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      console.log("Form submitted:", formData);
+      // EmailJS send - REPLACE WITH YOUR CREDENTIALS
+      await emailjs.sendForm(
+        'service_1p62hwq',    // From Email Services
+        'template_1ezpr0y',   // From Email Templates  
+        formRef.current!,     // Form reference
+        'LwMscZgOCQ19S1d4Q'     // From Account > API Keys
+      );
+
+      // Clear form on success
       setFormData({ name: "", email: "", message: "" });
       setSubmitStatus("success");
     } catch (error) {
+      console.error("EmailJS Error:", error);
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
@@ -53,7 +67,7 @@ export default function Contact() {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 selection:bg-blue-500/40 font-['Inter'] relative overflow-hidden">
       
-      {/* 🌌 3D FLOATING ORBS BACKGROUND */}
+      {/* 🌌 3D FLOATING ORBS BACKGROUND - UNCHANGED */}
       <div className="fixed inset-0 pointer-events-none z-0">
         {orbs.map((orb, index) => (
           <motion.div
@@ -81,7 +95,7 @@ export default function Contact() {
 
       <Navbar />
 
-      {/* 🎯 HERO */}
+      {/* 🎯 HERO - UNCHANGED */}
       <motion.section 
         initial="hidden"
         whileInView="visible"
@@ -117,7 +131,8 @@ export default function Contact() {
       {/* 📞 CONTACT SECTION */}
       <section className="py-24 px-6 lg:px-20 max-w-6xl mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          {/* 📱 Contact Info */}
+          
+          {/* 📱 Contact Info - UNCHANGED */}
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -165,14 +180,18 @@ export default function Contact() {
             </div>
           </motion.div>
 
-          {/* 📝 FORM */}
+          {/* 📝 FORM - NOW EMAILJS READY */}
           <motion.div 
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <motion.form onSubmit={onSubmit} className="bg-slate-900/90 backdrop-blur-sm rounded-3xl p-8 border-2 border-slate-800 shadow-2xl">
+            <motion.form 
+              ref={formRef}
+              onSubmit={onSubmit}
+              className="bg-slate-900/90 backdrop-blur-sm rounded-3xl p-8 border-2 border-slate-800 shadow-2xl"
+            >
               <div className="space-y-6">
                 {submitStatus === "success" && (
                   <motion.div
@@ -182,7 +201,7 @@ export default function Contact() {
                   >
                     <CheckCircleIcon className="w-16 h-16 text-emerald-400 mx-auto mb-4" />
                     <h4 className="text-2xl font-bold text-emerald-300 mb-3">Message Sent Successfully!</h4>
-                    <p className="text-emerald-200 text-lg">We'll respond within 24 hours.</p>
+                    <p className="text-emerald-200 text-lg">Check your email for confirmation. We'll respond within 24 hours.</p>
                   </motion.div>
                 )}
 
@@ -200,12 +219,13 @@ export default function Contact() {
                 {submitStatus === "idle" && (
                   <>
                     <div>
-                      <label htmlFor="name" className="block text-sm font-semibold text-slate-300 mb-3">
+                      <label htmlFor="user_name" className="block text-sm font-semibold text-slate-300 mb-3">
                         Full Name
                       </label>
                       <input
                         type="text"
-                        id="name"
+                        name="user_name"  // EmailJS expects "user_name", "user_email", "message"
+                        id="user_name"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         className="w-full px-5 py-4 bg-slate-800/70 backdrop-blur-sm rounded-2xl border-2 border-slate-700 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 text-slate-200 placeholder-slate-500 transition-all duration-400 text-lg"
@@ -216,12 +236,13 @@ export default function Contact() {
                     </div>
 
                     <div>
-                      <label htmlFor="email" className="block text-sm font-semibold text-slate-300 mb-3">
+                      <label htmlFor="user_email" className="block text-sm font-semibold text-slate-300 mb-3">
                         Email Address
                       </label>
                       <input
                         type="email"
-                        id="email"
+                        name="email"
+                        id="user_email"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         className="w-full px-5 py-4 bg-slate-800/70 backdrop-blur-sm rounded-2xl border-2 border-slate-700 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 text-slate-200 placeholder-slate-500 transition-all duration-400 text-lg"
@@ -236,6 +257,7 @@ export default function Contact() {
                         Project Details
                       </label>
                       <textarea
+                        name="message"
                         id="message"
                         rows={4}
                         value={formData.message}

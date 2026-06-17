@@ -21,7 +21,7 @@ export default function Navbar() {
       <div className="max-w-6xl  mx-auto flex justify-between items-center">
         {/* Logo */} 
         <div className="logo flex my-auto">
- <img src="/public/dvn.png" alt="logo divinesiontech" className=" w-14 h-15" />
+ <img src="/dvn.png" alt="logo divinesiontech" className=" w-14 h-15" />
         <Link to="/" className="text-3xl my-2 font-black bg-gradient-to-r from-slate-200 to-blue-400 bg-clip-text text-transparent hover:scale-105 transition-transform">
        Divinesion
         </Link>

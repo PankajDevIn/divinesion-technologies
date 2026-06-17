@@ -7,4 +7,5 @@ export default defineConfig({
     react(),
     tailwindcss(), // ✅ Tailwind plugin
   ],
+  base:"divinesion-technologies"
 });
