@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 import Home from "../pages/Home";
 import About from "../pages/About";
 import Services from "../pages/Services";
@@ -9,7 +9,7 @@ import EnterpriseApps from "../pages/services/EnterpriseApps";
 import LogoBranding from "../pages/services/LogoBranding";
 import AIAutomation from "../pages/services/AIAutomation";
 import CloudSolutions from "../pages/services/CloudSolutions";
-const router = createBrowserRouter([
+const router = createHashRouter([
   { path: "/", element: <Home /> },
   { path: "/about", element: <About /> },
 
