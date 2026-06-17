@@ -1,4 +1,5 @@
-import { createHashRouter, RouterProvider } from "react-router-dom";
+import { createHashRouter, RouterProvider } from "react-router-dom"; // ✅ Combined into one clean line
+
 import Home from "../pages/Home";
 import About from "../pages/About";
 import Services from "../pages/Services";

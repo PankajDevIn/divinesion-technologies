@@ -1,11 +1,11 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react-swc";
-import tailwindcss from "@tailwindcss/vite";
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite' // Or your specific Tailwind import
 
 export default defineConfig({
   plugins: [
     react(),
-    tailwindcss(), // ✅ Tailwind plugin
+    tailwindcss(), 
   ],
-  base:'/divinesion-technologies/',
+  base: '/divinesion-technologies/', // ✅ Clean, single line with matching quotes
 });
