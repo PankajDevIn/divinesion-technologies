@@ -1,4 +1,4 @@
-import React from "react";
+
 import { motion } from "framer-motion"; // ✅ Imported Variants interface safely
 import type { Variants } from "framer-motion"; // ✅ Explicitly imported Variants type
 import {
@@ -82,7 +82,7 @@ export default function About() {
               Our founder’s vision: to empower every learner and entrepreneur with tools that scale globally.
             </p>
           </article>
-          <div className="bg-gradient-to-tr from-indigo-100 to-purple-100 rounded-3xl h-64 md:h-full flex items-center justify-center border-2 border-dashed border-indigo-200">
+          <div className="bg-linear-to-tr from-indigo-100 to-purple-100 rounded-3xl h-64 md:h-full flex items-center justify-center border-2 border-dashed border-indigo-200">
              {/* Placeholder for an About Image or Illustration */}
              <span className="text-indigo-400 font-medium italic">Our Vision in Motion</span>
           </div>

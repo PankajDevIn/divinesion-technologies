@@ -116,7 +116,7 @@ const Services: React.FC = () => {
       >
         <motion.h1 
           variants={fadeInUp}
-          className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 tracking-[-0.02em] bg-gradient-to-r from-slate-100 via-white to-blue-400 bg-clip-text text-transparent drop-shadow-4xl"
+          className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 tracking-[-0.02em] bg-linear-to-r from-slate-100 via-white to-blue-400 bg-clip-text text-transparent drop-shadow-4xl"
         >
           Our Services
         </motion.h1>
@@ -129,7 +129,7 @@ const Services: React.FC = () => {
         <motion.a
           href="/contact"
           variants={fadeInUp}
-          className="px-12 py-6 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-4xl font-black text-xl shadow-3xl border-2 border-blue-500/50 shadow-blue-500/30 hover:shadow-blue-400/50 transition-all duration-700 flex items-center gap-4 w-fit mx-auto"
+          className="px-12 py-6 bg-linear-to-r from-blue-600 to-cyan-600 text-white rounded-4xl font-black text-xl shadow-3xl border-2 border-blue-500/50 shadow-blue-500/30 hover:shadow-blue-400/50 transition-all duration-700 flex items-center gap-4 w-fit mx-auto"
           whileHover={{ scale: 1.05 }}
         >
           Get Free Consultation
@@ -146,7 +146,7 @@ const Services: React.FC = () => {
           variants={staggerContainer}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12"
         >
-          {services.map((service, index) => (
+          {services.map((service) => (
             <motion.div
               key={service.title}
               variants={fadeInUp}
@@ -155,7 +155,7 @@ const Services: React.FC = () => {
             >
               {/* Animated gradient background */}
               <motion.div
-                className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 blur-xl`}
+                className={`absolute inset-0 bg-linear-to-br ${service.color} opacity-0 blur-xl`}
                 animate={{ opacity: [0, 0.08, 0] }}
                 transition={{ duration: 4, repeat: Infinity }}
               />
@@ -171,7 +171,7 @@ const Services: React.FC = () => {
               
               {/* Content */}
               <div className="relative z-10 flex-1 flex flex-col items-center text-center">
-                <h3 className="text-2xl lg:text-3xl font-black mb-4 bg-gradient-to-r from-slate-200 to-blue-300 bg-clip-text text-transparent drop-shadow-lg">
+                <h3 className="text-2xl lg:text-3xl font-black mb-4 bg-linear-to-r from-slate-200 to-blue-300 bg-clip-text text-transparent drop-shadow-lg">
                   {service.title}
                 </h3>
                 <p className="text-lg text-slate-400 mb-6 leading-relaxed max-w-md">
@@ -181,7 +181,7 @@ const Services: React.FC = () => {
                   {service.stats}
                 </div>
                <motion.button
-                  className="px-6 py-3 bg-gradient-to-r from-blue-600/90 to-cyan-600/90 text-white rounded-2xl font-black text-sm border border-blue-500/50 shadow-xl hover:shadow-blue-500/30 transition-all duration-300 flex items-center gap-2 group"
+                  className="px-6 py-3 bg-linear-to-r from-blue-600/90 to-cyan-600/90 text-white rounded-2xl font-black text-sm border border-blue-500/50 shadow-xl hover:shadow-blue-500/30 transition-all duration-300 flex items-center gap-2 group"
                   onClick={() => handleLearnMore(service.slug)}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.98 }}
