@@ -1,7 +1,8 @@
 // pages/Services.tsx
 import React from "react";
-import { motion } from "framer-motion";
-import { href, Link,Navigate ,useNavigate } from "react-router-dom";
+import { motion } from 'framer-motion';
+import type { Variants } from 'framer-motion'; 
+import { useNavigate } from "react-router-dom";
 import {
   DevicePhoneMobileIcon,
   GlobeAltIcon,
@@ -9,7 +10,6 @@ import {
   BuildingOfficeIcon,
   CloudIcon,
   CpuChipIcon,
-  CheckCircleIcon,
   ArrowRightIcon,
 } from "@heroicons/react/24/outline";
 import Navbar from "../components/Navbar";
@@ -77,13 +77,20 @@ const services: Service[] = [
   },
 ];
 
-// Animation variants
-const fadeInUp = {
+// ✅ Explicit casting on array types maps correctly to structural transitions
+const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94] } },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { 
+      duration: 0.9, 
+      ease: [0.25, 0.46, 0.45, 0.94] as const 
+    } 
+  },
 };
 
-const staggerContainer = {
+const staggerContainer: Variants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.2 } },
 };
@@ -143,8 +150,7 @@ const Services: React.FC = () => {
             <motion.div
               key={service.title}
               variants={fadeInUp}
-              className="group relative p-8 lg:p-12 rounded-3xl bg-slate-900 border-2 border-slate-800 shadow-2xl hover:shadow-blue-500/30 hover:border-blue-600/50 transition-all duration-700 overflow-hidden min-h-[320px] flex flex-col justify-between"
-              transition={{ delay: index * 0.1 }}
+              className="group relative p-8 lg:p-12 rounded-3xl bg-slate-900 border-2 border-slate-800 shadow-2xl hover:shadow-blue-500/30 hover:border-blue-600/50 transition-all duration-700 overflow-hidden min-h-80 flex flex-col justify-between"
               whileHover={{ y: -8 }}
             >
               {/* Animated gradient background */}
@@ -199,22 +205,12 @@ const Services: React.FC = () => {
         <div className="max-w-6xl mx-auto text-center">
           <motion.div 
             variants={fadeInUp}
-            className="inline-flex items-center gap-3 px-8 py-4 rounded-3xl bg-slate-900/90 border-2 border-blue-800/50 shadow-2xl mb-12"
-          >
-            <CheckCircleIcon className="w-6 h-6 text-emerald-400" />
-            <span className="text-sm font-black tracking-[0.2em] uppercase text-slate-300">
-              Trusted by 50+ Enterprises
-            </span>
-          </motion.div>
-          <motion.p 
-            variants={fadeInUp}
-            className="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto leading-relaxed"
-          >
-            Join leading businesses transforming their digital presence with our proven development expertise
-          </motion.p>
+            className="inline-flex items-center"
+          />
         </div>
       </motion.section>
-
+      
+      {/* ✅ Cleanly terminated Footer instance */}
       <Footer />
     </div>
   );
